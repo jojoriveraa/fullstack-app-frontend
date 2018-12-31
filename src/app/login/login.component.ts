@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  username = 'jrivera'
-  password = ''
+  username = 'jrivera';
+  password = '';
 
   constructor() { }
 
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    console.log(this.username)
+    console.log(this.username);
   }
 
 }

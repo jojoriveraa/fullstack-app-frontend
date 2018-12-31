@@ -1,7 +1,7 @@
 import { TestBed, async, TestBedStatic } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component'
+import { LoginComponent } from './login/login.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -33,5 +33,5 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('app-login')).not.toBeNull();
   });
-  
+
 });
