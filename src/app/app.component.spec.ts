@@ -1,7 +1,7 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, TestBedStatic } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { WelcomeComponent} from './welcome/welcome.component'
+import { LoginComponent } from './login/login.component'
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -10,7 +10,7 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent, WelcomeComponent
+        AppComponent, LoginComponent
       ],
     }).compileComponents();
   }));
@@ -27,29 +27,11 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('todo');
   });
 
-  describe('should render', () => {
-
-    let fixture
-    let compiled
-
-
-    beforeEach( () => {
-      fixture = TestBed.createComponent(AppComponent);
-      fixture.detectChanges();
-      compiled = fixture.debugElement.nativeElement;
-    })
-
-    it('title in a h1 tag', () => {
-      expect(compiled.querySelector('h1').textContent).toContain('Welcome to todo!');
-    });
+  it('should render the app-login component', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('app-login')).not.toBeNull();
+  });
   
-    it('author in a h2 tag', () => {
-      expect(compiled.querySelector('h2').textContent).toContain('By jriverai');
-    });
-  
-    it('the welcome-app component', () => {
-      expect(compiled.querySelector('app-welcome')).not.toBeNull();
-    });
-
-  })
 });
