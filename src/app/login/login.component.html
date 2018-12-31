@@ -1,4 +1,4 @@
-Username : <input type="text" name="username">
-Password : <input type="text" name="password">
+Username : <input type="text" name="username" [(ngModel)]="username" >
+Password : <input type="text" name="password" [(ngModel)]="password">
 
-<button>Login</button>
+<button (click)=handleLogin()>Login</button>
