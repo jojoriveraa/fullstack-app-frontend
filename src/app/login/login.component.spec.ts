@@ -47,7 +47,7 @@ describe('LoginComponent', () => {
       expect(compiled.querySelector('input[name="password"]')).not.toBeNull();
     });
 
-    it('invalid credentials text if bad credentials', () => {
+    it('invalid credentials text when credentials are wrong', () => {
       component.invalidLogin = true;
       fixture.detectChanges()
       expect(compiled.querySelector('small').textContent).toContain('Invalid credentials');
@@ -61,7 +61,7 @@ describe('LoginComponent', () => {
       compiled = fixture.debugElement.nativeElement;
     })
 
-    it('invalid credentials text if credentials are ok', () => {
+    it('invalid credentials text when credentials are ok', () => {
       component.invalidLogin = false;
       fixture.detectChanges()
       expect(compiled.querySelector('small')).toBeNull();
