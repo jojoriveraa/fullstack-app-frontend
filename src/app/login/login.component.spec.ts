@@ -7,50 +7,65 @@ import { FormsModule } from '@angular/forms';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [LoginComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
-  
+
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
+
   it('should handle the login', () => {
-    const consoleLogSpy = spyOnProperty(component, 'invalidLogin', 'set');
+    const spy = spyOnProperty(component, 'invalidLogin', 'set');
     component.handleLogin()
-    expect(consoleLogSpy.calls.count()).toBe(1)
+    expect(spy.calls.count()).toBe(1)
   });
-  
+
   describe('should render', () => {
-    let compiled : any
-    
+    let compiled: any;
+
     beforeEach(() => {
       compiled = fixture.debugElement.nativeElement;
     })
 
-    it('should render the username field', () => {
+    it('username field', () => {
       expect(compiled.querySelector('input[name="username"]')).not.toBeNull();
     });
 
-    it('should render the password field', () => {
+    it('password field', () => {
       expect(compiled.querySelector('input[name="password"]')).not.toBeNull();
     });
 
-    it('should render the invalid credentials text', () => {
-      expect(compiled.querySelector('small').textContent).toContain('Invalid credentials')
+    it('invalid credentials text if bad credentials', () => {
+      component.invalidLogin = true;
+      fixture.detectChanges()
+      expect(compiled.querySelector('small').textContent).toContain('Invalid credentials');
     });
   })
 
+  describe('should not render', () => {
+    let compiled: any;
+
+    beforeEach(() => {
+      compiled = fixture.debugElement.nativeElement;
+    })
+
+    it('invalid credentials text if credentials are ok', () => {
+      component.invalidLogin = false;
+      fixture.detectChanges()
+      expect(compiled.querySelector('small')).toBeNull();
+    });
+  });
 
 });
