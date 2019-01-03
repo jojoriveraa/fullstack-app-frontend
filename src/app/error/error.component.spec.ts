@@ -8,9 +8,8 @@ describe('ErrorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorComponent ]
-    })
-    .compileComponents();
+      declarations: [ErrorComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +20,12 @@ describe('ErrorComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display: An error ocurred! Please, contact support at...', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('div').textContent).toContain(
+      'An error ocurred! Please, contact support at'
+    );
   });
 });
