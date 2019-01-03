@@ -27,7 +27,7 @@ describe('LoginComponent', () => {
   });
   
   it('should handle the login', () => {
-    let consoleLogSpy = spyOn(console, 'log');
+    const consoleLogSpy = spyOnProperty(component, 'invalidLogin', 'set');
     component.handleLogin()
     expect(consoleLogSpy.calls.count()).toBe(1)
   });
