@@ -32,10 +32,4 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('todo');
   });
-
-  it('should render the app-login component', () => {
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('app-login')).not.toBeNull();
-  });
 });
