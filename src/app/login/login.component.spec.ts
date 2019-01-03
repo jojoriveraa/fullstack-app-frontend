@@ -12,8 +12,7 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [LoginComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -28,8 +27,8 @@ describe('LoginComponent', () => {
 
   it('should handle the login', () => {
     const spy = spyOnProperty(component, 'invalidLogin', 'set');
-    component.handleLogin()
-    expect(spy.calls.count()).toBe(1)
+    component.handleLogin();
+    expect(spy.calls.count()).toBe(1);
   });
 
   describe('should render', () => {
@@ -37,7 +36,7 @@ describe('LoginComponent', () => {
 
     beforeEach(() => {
       compiled = fixture.debugElement.nativeElement;
-    })
+    });
 
     it('username field', () => {
       expect(compiled.querySelector('input[name="username"]')).not.toBeNull();
@@ -49,23 +48,24 @@ describe('LoginComponent', () => {
 
     it('invalid credentials text when credentials are wrong', () => {
       component.invalidLogin = true;
-      fixture.detectChanges()
-      expect(compiled.querySelector('small').textContent).toContain('Invalid credentials');
+      fixture.detectChanges();
+      expect(compiled.querySelector('small').textContent).toContain(
+        'Invalid credentials'
+      );
     });
-  })
+  });
 
   describe('should not render', () => {
     let compiled: any;
 
     beforeEach(() => {
       compiled = fixture.debugElement.nativeElement;
-    })
+    });
 
     it('invalid credentials text when credentials are ok', () => {
       component.invalidLogin = false;
-      fixture.detectChanges()
+      fixture.detectChanges();
       expect(compiled.querySelector('small')).toBeNull();
     });
   });
-
 });
