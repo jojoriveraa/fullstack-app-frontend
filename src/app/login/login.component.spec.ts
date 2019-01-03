@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { LoginComponent } from './login.component';
-
 import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -10,7 +9,7 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [FormsModule, RouterTestingModule],
       declarations: [LoginComponent]
     }).compileComponents();
   }));
@@ -56,13 +55,8 @@ describe('LoginComponent', () => {
   });
 
   describe('should not render', () => {
-    let compiled: any;
-
-    beforeEach(() => {
-      compiled = fixture.debugElement.nativeElement;
-    });
-
     it('invalid credentials text when credentials are ok', () => {
+      const compiled = fixture.debugElement.nativeElement;
       component.invalidLogin = false;
       fixture.detectChanges();
       expect(compiled.querySelector('small')).toBeNull();
