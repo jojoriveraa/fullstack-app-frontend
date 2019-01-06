@@ -8,6 +8,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { MenuComponent } from './menu/menu.component';
+import { FooterComponent } from './footer/footer.component';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -15,7 +17,12 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, RouterTestingModule],
-      declarations: [AppComponent, LoginComponent]
+      declarations: [
+        AppComponent,
+        LoginComponent,
+        MenuComponent,
+        FooterComponent
+      ]
     }).compileComponents();
   }));
 
