@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class HardcodedAuthenticationService {
+  constructor() {}
 
-  constructor() { }
+  authenticate(username: string, password: string) {
+    return username === 'jrivera' && password === 'dummy';
+  }
 }
