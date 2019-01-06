@@ -1,14 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 import { WelcomeComponent } from './welcome.component';
 
 describe('WelcomeComponent', () => {
+  const name = 'name-of-the-user';
   let component: WelcomeComponent;
   let fixture: ComponentFixture<WelcomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [WelcomeComponent]
+      declarations: [WelcomeComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: { snapshot: { params: { name } } }
+        }
+      ]
     }).compileComponents();
   }));
 
@@ -20,5 +28,14 @@ describe('WelcomeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it(`should set the param ${name}in name variable`, () => {
+    expect(component.name).toBe(name);
+  });
+
+  it(`should display the ${name} in message`, () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('div').textContent).toContain(name);
   });
 });
