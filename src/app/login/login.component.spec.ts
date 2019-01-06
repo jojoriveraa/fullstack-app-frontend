@@ -61,7 +61,7 @@ describe('LoginComponent', () => {
     it('invalid credentials text when credentials are wrong', () => {
       component.invalidLogin = true;
       fixture.detectChanges();
-      expect(compiled.querySelector('small').textContent).toContain(
+      expect(compiled.querySelector('div.alert-warning').textContent).toContain(
         'Invalid credentials'
       );
     });
@@ -72,7 +72,7 @@ describe('LoginComponent', () => {
       const compiled = fixture.debugElement.nativeElement;
       component.invalidLogin = false;
       fixture.detectChanges();
-      expect(compiled.querySelector('small')).toBeNull();
+      expect(compiled.querySelector('div.alert-warning')).toBeNull();
     });
   });
 });
