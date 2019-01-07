@@ -8,10 +8,10 @@ import { HardcodedAuthenticationService } from './../service/hardcoded-authentic
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username = 'jrivera';
+  username = '';
   password = '';
   errorMessage = 'Invalid credentials';
-  _invalidLogin = false;
+  invalidLogin = false;
 
   constructor(
     private router: Router,
@@ -32,13 +32,5 @@ export class LoginComponent implements OnInit {
     } else {
       this.invalidLogin = true;
     }
-  }
-
-  public get invalidLogin(): boolean {
-    return this._invalidLogin;
-  }
-
-  public set invalidLogin(v: boolean) {
-    this._invalidLogin = v;
   }
 }
