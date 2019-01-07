@@ -7,7 +7,7 @@ import { LoginComponent } from './login.component';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let service: HardcodedAuthenticationService;
+  let hardcodedAuthService: HardcodedAuthenticationService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,7 +20,7 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
-    service = TestBed.get(HardcodedAuthenticationService);
+    hardcodedAuthService = TestBed.get(HardcodedAuthenticationService);
     fixture.detectChanges();
   });
 
@@ -29,16 +29,16 @@ describe('LoginComponent', () => {
   });
 
   it('should return invalidLogin -> false when credential are right', () => {
-    spyOn(service, 'authenticate').and.returnValue(true);
+    spyOn(hardcodedAuthService, 'authenticate').and.returnValue(true);
     component.handleLogin();
     expect(component.invalidLogin).toBeFalsy();
-    expect(service.authenticate).toHaveBeenCalled();
+    expect(hardcodedAuthService.authenticate).toHaveBeenCalled();
   });
 
   it('should return invalidLogin -> true when credential are wrong', () => {
-    spyOn(service, 'authenticate').and.returnValue(false);
+    spyOn(hardcodedAuthService, 'authenticate').and.returnValue(false);
     component.handleLogin();
     expect(component.invalidLogin).toBeTruthy();
-    expect(service.authenticate).toHaveBeenCalled();
+    expect(hardcodedAuthService.authenticate).toHaveBeenCalled();
   });
 });
