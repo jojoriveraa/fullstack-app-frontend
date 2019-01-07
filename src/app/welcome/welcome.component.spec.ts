@@ -31,10 +31,6 @@ describe('WelcomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should set the param ${name}in name variable`, () => {
-    expect(component.name).toBe(name);
-  });
-
   it(`should display the ${name} in message`, () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('div').textContent).toContain(name);

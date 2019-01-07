@@ -21,11 +21,4 @@ describe('ErrorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should display: An error ocurred! Please, contact support at...', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('div').textContent).toContain(
-      'An error ocurred! Please, contact support at'
-    );
-  });
 });
